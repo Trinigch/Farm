@@ -4,11 +4,11 @@ A full-stack farm management application to track animals, record health events,
 Technologies
 Front-end: React, Vite, React Router, JSX, React Hooks, styled-components
 
-Back-end: Node.js, Express, Sequelize ORM (configured for Oracle Database)
+Back-end: Node.js, Express, Sequelize ORM
 
-Database: Oracle Database
+Database: SQL Express
 
-Deployment: (Add your deployment platforms, e.g., Render, Heroku, Netlify)
+Deployment: Neon
 
 Installation
 Clone the repository and install dependencies for both client and server:
@@ -31,10 +31,7 @@ Create a .env file in the server/ directory with these variables:
 env
 Copiar
 Editar
-DB_USER=<your_oracle_username>
-DB_PASSWORD=<your_oracle_password>
-DB_CONNECTION_STRING=<your_oracle_connection_string>
-# Add any other env variables your backend requires
+
 Usage
 Development
 In one terminal, start the front-end:
