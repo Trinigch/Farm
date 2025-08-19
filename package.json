@@ -3,27 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-
-   "scripts": {
-  "test": "echo \"Error: no test specified\" && exit 1",
-
-
-  "build": "cd server && npm run build && cd ../client && npm run build && npm run copy-client-build",
-
-  "start": "node server/dist/server.js",
-
-
-  "dev": "concurrently \"cd server && npm run dev\" \"cd client && npm run dev\"",
-
-
-  "server": "cd server && npm start",
-  "server:dev": "cd server && npm run dev",
-  "client:build": "cd client && npm run build",
-  "client:dev": "cd client && npm run dev",
-
-  "copy-client-build": "mkdir -p server/dist && rm -rf server/dist/client && cp -r client/dist server/dist/client"
-   },
-  
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd server && npm run build && cd ../client && npm run build && npm run copy-client-build",
+    "start": "node server/dist/server.js",
+    "dev": "concurrently \"cd server && npm run dev\" \"cd client && npm run dev\"",
+    "server": "cd server && npm start",
+    "server:dev": "cd server && npm run dev",
+    "client:build": "cd client && npm run build",
+    "client:dev": "cd client && npm run dev",
+    "copy-client-build": "mkdir -p server/dist && rm -rf server/dist/client && cp -r client/dist server/dist/client"
+  },
   "seed": "cd server && npm run seed",
   "render-build": "npm run install && npm run build",
   "keywords": [],
@@ -58,7 +48,6 @@
     "sequelize": "^6.37.7",
     "sequelize-oracle": "^3.3.2-0.0",
     "styled-components": "^6.1.18",
-    "tsc": "^2.0.4",
     "vite": "^5.4.19"
   }
 }
