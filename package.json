@@ -15,7 +15,7 @@
     "client:dev": "cd client && npm run dev",
     "copy-client-build": "mkdir -p server/dist && rm -rf server/dist/client && cp -r client/dist server/dist/client",
     "seed": "cd server && npm run seed",
-    "render-build": "npm run install && npm run build",
+    "render-build": "npm run install && npm run build"
   },
   "keywords": [],
   "author": "",
