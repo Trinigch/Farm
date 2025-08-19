@@ -5,8 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run client:build && npm run server",
-    "start:dev": "concurrently \"npm run server:dev\" \"wait-on tcp:3001 && npm run client:dev\"",
+     "build": "tsc",
+     "start": "node dist/server.js",
+     "dev": "nodemon src/server.ts",
+    "startviejo": "npm run client:build && npm run server",
+    "start2:dev": "concurrently \"npm run server:dev\" \"wait-on tcp:3001 && npm run client:dev\"",
     "server": "cd server && npm start",
     "server:dev": "cd server && npm run dev",
     "install": "cd server && npm install --include=dev && cd ../client && npm install",
@@ -14,7 +17,8 @@
     "client:dev": "cd client && npm run dev",
     "build-server": "cd server && npx tsc",
     "copy-client-build": "mkdir -p server/dist && rm -rf server/dist/client && cp -r client/dist server/dist/client",
-    "build": "npm run client:build && npm run copy-client-build && npm run build-server",
+    "buildold": "cd server && npm run build && cd ../client && npm run build",
+  
     "seed": "cd server && npm run seed",
     "render-build": "npm run install && npm run build"
   },

@@ -5,9 +5,8 @@
   "main": "dist/server.js",
   "scripts": {
     "build": "tsc",
-    "start": "npm run build && node dist/server.js",
-    "dev": "npx nodemon",
-    "start:dev": "concurrently \"npm run dev\""
+    "start":  "node dist/server.js",
+    "dev": "nodemon src/server.ts"
   },
   "dependencies": {
     "cors": "^2.8.5",
