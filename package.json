@@ -21,13 +21,11 @@
   "client:build": "cd client && npm run build",
   "client:dev": "cd client && npm run dev",
 
-  // Copia el build del client dentro del dist del server (para servir React desde Express en producción)
-  "copy-client-build": "mkdir -p server/dist && rm -rf server/dist/client && cp -r client/dist server/dist/client"
-}
+  "copy-client-build": "mkdir -p server/dist && rm -rf server/dist/client && cp -r client/dist server/dist/client",
+   },
   
-    "seed": "cd server && npm run seed",
-    "render-build": "npm run install && npm run build"
-  },
+  "seed": "cd server && npm run seed",
+  "render-build": "npm run install && npm run build",
   "keywords": [],
   "author": "",
   "license": "ISC",
