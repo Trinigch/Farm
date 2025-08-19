@@ -12,7 +12,7 @@ app.use('/api/animals',  animals );
 app.use(express.static(path.join(__dirname, 'client')));
 
 // Ruta catch-all para React
-app.get('*', (req, res) => {
+app.get('*', (__req, res) => {
   res.sendFile(path.join(__dirname, 'client', 'index.html'));
 });
 export default app;
