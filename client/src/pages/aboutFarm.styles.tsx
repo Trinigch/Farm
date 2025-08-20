@@ -67,8 +67,8 @@ export const ImageContainer = styled.div<{ background?: string }>`
   min-height: 100vh;
   max-width: 1200px;
   background: ${(props) => (props.background
-    ? `url(${props.background}) center/cover no-repeat, #3e3e3e`
-    : "#3e3e3e")};
+      ? `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url(${props.background}) center/cover no-repeat`
+   : "#3e3e3e")};
   border-radius: 10px;
   margin: 50px 0px;
   padding-bottom: 40px;
@@ -201,15 +201,25 @@ export const CardsRow = styled.div`
   }
 `;
 export const CardContainer = styled.div`
-  background: rgba(0, 255, 20, 0.5); /* Fondo blanco translúcido */
-  backdrop-filter: blur(6px); /* Desenfoque de fondo */
-  -webkit-backdrop-filter: blur(6px);
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,1.5);
-  padding: 10px;
-  color: #000; /* Color texto negro */
-  transition: transform 0.3s ease;
-  }
+  background: rgba(255, 255, 255, 0.15); 
+  backdrop-filter: blur(10px); 
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+  padding: 16px;
+  color: #fff; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  }`;
+
+  export const SectionHeader = styled.h2`
+  font-size: 2.2rem;
+  color: #fff8e1;
+  margin: 40px 0 20px;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
 `;
 export const ButtonRow = styled.div`
   display: flex;
@@ -232,6 +242,25 @@ export const ButtonRow = styled.div`
       background-color: rgba(255, 255, 255, 0.6);
       color: #000;
       transform: scale(1.05);
+    }
+  }
+`;
+export const AnimalList = styled.ul`
+  margin-top: 10px;
+  padding-left: 0;
+  list-style: none;
+  color: #fdfdfd;
+  font-size: 0.95rem;
+
+  li {
+    background: rgba(255, 255, 255, 0.1);
+    margin: 4px 0;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
     }
   }
 `;

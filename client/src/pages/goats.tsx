@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import GoatDetailPopup from "../components/GoatDetailPopup";
 import { Goat } from "./../interfaces/models";
-
+import { SectionHeader , Title } from "./aboutFarm.styles";
 export default function GoatsByYear() {
   const [goats, setGoats] = useState<Goat[]>([]);
   const [selectedGoat, setSelectedGoat] = useState<Goat | null>(null);
@@ -65,9 +65,9 @@ export default function GoatsByYear() {
 
   return (
     <>
-      <div className="flex flex-col p-0 text-center bg-yellow-100 font-bold text-3xl">
-        {`Total de cabras: ${goats.length}`}
-      </div>
+        <SectionHeader >  
+          <Title> {`Goats Total: ${goats.length}`}</Title>
+         </SectionHeader > 
 
       <svg
         width="100%"
