@@ -8,6 +8,7 @@ import Goats from './pages/goats.tsx'
 import Chickenandmore  from './pages/chickenandmore.tsx'
 import AboutFarm from './pages/aboutFarm.tsx';
 import AnimalForm from './components/AnimalRecord.tsx';
+import  RemoveAnimal from './components/RemoveAnimal.tsx'
 
 
 
@@ -40,7 +41,14 @@ const router = createBrowserRouter([
       {
       path: 'add-animal',
       element: <AnimalForm />
-    }
+      },
+      {
+      path: 'remove-animal',
+      element: < RemoveAnimal />
+      }
+
+
+
     ],
   },
 ])

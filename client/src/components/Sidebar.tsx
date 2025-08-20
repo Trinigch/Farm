@@ -58,6 +58,11 @@ export default function Sidebar() {
       <button onClick={handleAddAnimalClick} style={{ all: "unset", cursor: "pointer" }}>
         ➕ Add Animal
       </button>
+
+
+       <button onClick={() => navigate("/remove-animal")} style={{ all: "unset", cursor: "pointer" }}>
+        ➖  remove Animal
+      </button>
       <Link to="/historial">📋 Medical History</Link>
       <Link to="/buscar">🔍 Search / Filter</Link>
 

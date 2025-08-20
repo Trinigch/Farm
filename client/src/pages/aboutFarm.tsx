@@ -126,8 +126,8 @@ function AboutFarm() {
       const res = await fetch("/api/animals/");
       const data: any[] = await res.json();
 
-      const sheepsData: Sheep[] = data.filter(a => a.especie === "oveja");
-      const goatsData: Goat[] = data.filter(a => a.especie === "cabra");
+      const sheepsData: Sheep[] = data.filter(a => a.especie === "sheep");
+      const goatsData: Goat[] = data.filter(a => a.especie === "goat");
       const birdsData: Bird[] = data.filter(a => 
         ["chicken", "duck", "turkey"].includes(a.especie)
       );

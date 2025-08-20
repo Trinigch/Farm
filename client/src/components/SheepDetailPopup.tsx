@@ -98,7 +98,7 @@ const handleSave = async () => {
   for (const field of ["padre_id", "madre_id"] as const) {
     const val = formData[field];
     if (val !== null && val !== undefined && isNaN(Number(val))) {
-      alert(`El campo ${field} debe ser un número válido o vacío`);
+      alert(`The field  ${field} must bea valid number o empty `);
       return;
     }
   }

@@ -300,7 +300,7 @@ export default function SheepsByYear() {
     const fetchSheeps = async () => {
       const res = await fetch("/api/animals/");
       const data: Sheep[] = await res.json();
-      setSheeps(data.filter(s => s.especie === "oveja"));
+      setSheeps(data.filter(s => s.especie === "sheep"));
     };
     fetchSheeps();
 
