@@ -23,6 +23,9 @@ export type Goat = {
 
 export type  Bird = {
   id: number;
+  nombre: string;
+  fecha_nacimiento: string;
   especie: string; // "chicken", "turkey", "duck"
   estado: string;  // "alive" | "deceased"
+  observaciones?: string;
 }

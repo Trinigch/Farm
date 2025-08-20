@@ -94,13 +94,9 @@ import SummaryCard from "../components/SummaryCard";
 import moreImage from "./../assets/img/cats.jpeg";
 import { Container, ImageContainer, Title, CardsRow, CardContainer } from "./../pages/aboutFarm.styles";
 
-interface Bird {
-  id: number;
-  nombre: string;
-  especie: string; // "chicken", "turkey", "duck"
-  estado: string; // "alive" | "deceased"
-  fecha_nacimiento: string;
-}
+import { Bird } from "./../interfaces/models";
+
+
 
 export default function BirdsDetailPopup() {
   const [birds, setBirds] = useState<Bird[]>([]);
@@ -110,7 +106,7 @@ export default function BirdsDetailPopup() {
     const fetchBirds = async () => {
       const res = await fetch("/api/animals/");
       const data: Bird[] = await res.json();
-      const filteredBirds = data.filter(b => ["chicken", "turkey", "duck"].includes(b.especie));
+      const filteredBirds = data.filter(b => ["chicken", "turkey", "duck", "goose"].includes(b.especie));
       setBirds(filteredBirds);
     };
     fetchBirds();
@@ -120,6 +116,7 @@ export default function BirdsDetailPopup() {
     switch (especie) {
       case "chicken": return "🐔";
       case "duck": return "🦆";
+      case "goose": return "";
       case "turkey": return "🦃";
       default: return "🐣";
     }

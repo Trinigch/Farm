@@ -141,26 +141,29 @@ const handleSubmit = async (e: React.FormEvent) => {
           <Label>🐾 Species</Label>
           <Select name="especie" value={formData.especie} onChange={handleChange}>
             <option value="">Select</option>
-            <option value="oveja">🐑 Sheep</option>
-            <option value="cabra">🐐 Goat</option>
-            <option value="aves">🐔 🦆 Birds🦢</option>
-            <option value="pavo">🦃 Turkey</option>
+            <option value="sheep">🐑 Sheep</option>
+            <option value="goat">🐐 Goat</option>
+            <option value="chicken">🐔 Chicken</option>
+            
+            <option value="duckie"> 🦆 Duckie</option>
+            
+            <option value="goose"> 🦢 Goose</option>
+            <option value="tukey">🦃 Turkey</option>
           </Select>
         </Field>
 
-        {/* Solo mostrar Breed si es oveja */}
-        {formData.especie === "oveja" && (
+     
           <Field>
-            <Label>🐑 Breed</Label>
+            <Label> Breed</Label>
             <Input
               type="text"
               name="breed"
               value={formData.breed}
               onChange={handleChange}
-              placeholder="Ej: Jacob, East Friesian, Raka, Dragon"
+              placeholder="Ej: Jacob, East Friesian, mini goat, legbar"
             />
           </Field>
-        )}
+        
   <Field>
     <Label>📅 Date of Birth</Label>
     <Input type="date" name="fecha_nacimiento" value={formData.fecha_nacimiento} onChange={handleChange} />
