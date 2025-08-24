@@ -1,61 +1,3 @@
-// import { useEffect, useState } from "react";
-
-// import SummaryCard from "../components/SummaryCard"; 
-// import moreImage from "./../assets/img/cats.jpeg";
-// import { Container, ImageContainer, Title, CardsRow, CardContainer } from "./aboutFarm.styles";
-
-// import { SectionHeader } from "./aboutFarm.styles";
-// interface Bird {
-//   id: number;
-//   especie: string; // "chicken" o "turkey"
-//   estado: string; // "alive" o "deceased"
-// }
-
-// function AboutFarm() {
-//   const [birds, setBirds] = useState<Bird[]>([]);
-
-//   useEffect(() => {
-//     const fetchBirds = async () => {
-//       const res = await fetch("/api/animals/");
-//       const data: Bird[] = await res.json();
-//       // Filtramos solo aves vivas
-//       const aliveBirds = data.filter(b => ["chicken", "turkey", "duck"].includes(b.especie) && b.estado !== "deceased");
-//       setBirds(aliveBirds);
-//     };
-//     fetchBirds();
-//   }, []);
-
-//   // Contar por especie
-//   const counts: Record<string, number> = { chicken: 0, turkey: 0, duck: 0 };
-//   birds.forEach(b => {
-//     if (counts[b.especie] !== undefined) counts[b.especie]++;
-//   });
-
-//   return (
-//     <Container>
-//              <SectionHeader > 
-//         <Title>{"🐔 Chicken and 🦃 More"}</Title>
-//       </SectionHeader > 
-
-//       <ImageContainer background={moreImage}>
-//         <CardsRow>
-//           <CardContainer>
-//             <SummaryCard title="Chicks" value={counts.chicken} icon="🐔" />
-//             <SummaryCard title="Duckies" value={counts.duck} icon="🦆" />
-//             <SummaryCard title="Turkeys" value={counts.turkey} icon="🦃" />
-//           </CardContainer>
-//           <CardContainer>
-//             <SummaryCard title="New born" value={0} icon="🐤" />
-//           </CardContainer>
-   
-//         </CardsRow>
-//       </ImageContainer>
-//     </Container>
-//   );
-// }
-
-// export default AboutFarm;
-
 import { useEffect, useState } from "react";
 import { SectionHeader, Title } from "./aboutFarm.styles";
 
@@ -101,22 +43,48 @@ export default function BirdsByYear() {
       <div style={{ padding: "20px" }}>
         {yearsSorted.map(year => (
           <div key={year} style={{ marginBottom: "40px" }}>
-            <h2>{year}</h2>
-            <ul>
+            <h2 style={{ textAlign: "center", marginBottom: "20px" }}>{year}</h2>
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "20px",
+                justifyContent: "center",
+              }}
+            >
               {birdsByYear[year].map(bird => (
-                <li
+                <div
                   key={bird.id}
-                  style={{
-                    cursor: "pointer",
-                    margin: "5px 0",
-                    color: bird.estado === "deceased" ? "#999" : "#000",
-                  }}
                   onClick={() => setSelectedBird(bird)}
+                  style={{
+                    width: "160px",
+                    padding: "15px",
+                    borderRadius: "12px",
+                    background: "#FFF5E1",
+                    boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
+                    textAlign: "center",
+                    cursor: "pointer",
+                    transition: "transform 0.2s ease",
+                    transform: bird.estado === "deceased" ? "none" : "scale(1)",
+                    opacity: bird.estado === "deceased" ? 0.6 : 1,
+                  }}
+                  onMouseEnter={e => {
+                    if (bird.estado !== "deceased") (e.currentTarget.style.transform = "scale(1.05)");
+                  }}
+                  onMouseLeave={e => {
+                    if (bird.estado !== "deceased") (e.currentTarget.style.transform = "scale(1)");
+                  }}
                 >
-                  {`${bird.nombre} (${bird.especie}) - ${new Date(bird.fecha_nacimiento).toLocaleDateString()}`}
-                </li>
+                  <strong>{bird.nombre}</strong>
+                  <p style={{ fontSize: "12px", margin: "5px 0" }}>
+                    {new Date(bird.fecha_nacimiento).toLocaleDateString()}
+                  </p>
+                  <span style={{ fontSize: "11px", color: "#555" }}>
+                    {bird.especie} {bird.estado === "deceased" ? "☠️" : "🟢"}
+                  </span>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         ))}
       </div>
