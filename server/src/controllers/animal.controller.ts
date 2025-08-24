@@ -94,9 +94,9 @@ export const eliminarAnimal = async (req: Request, res: Response) => {
 
   try {
     await pool.query(`DELETE FROM animales WHERE id = $1`, [id]);
-    res.json({ message: "Animal eliminado." });
+    res.json({ message: "Animal delete." });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Error eliminando el animal." });
+    res.status(500).json({ error: "Error deleting." });
   }
 };

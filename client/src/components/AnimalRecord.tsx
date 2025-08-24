@@ -1,15 +1,17 @@
 // src/pages/RegistroAnimal.tsx
 import { useState } from "react";
-import { FormContainer, Textarea,  Field, Label, Input, Select, Button} from "./AnimalRecordStyle"
+import { FormContainer, Textarea,FieldsetTitle, Field, Label, Input, Select, Button} from "./AnimalRecordStyle"
 
 export default function AnimalForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  const API_URL = import.meta.env.VITE_API_URL;
   const [formData, setFormData] = useState({
     nombre: "",
     especie: "",
     fecha_nacimiento: "",
     padre_id: "",
-    madre_id: "",
+    madre_id:"",
     estado: "alive",
     observaciones: "",
     breed: "",
@@ -26,7 +28,7 @@ const handleSubmit = async (e: React.FormEvent) => {
   console.log("Console.log Submitted data:", formData);
 
   try {
-    const response = await fetch("http://localhost:3001/api/animals/", {
+    const response = await fetch(`${API_URL}/api/animals/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -115,7 +117,7 @@ const handleSubmit = async (e: React.FormEvent) => {
   </Field>
 
   {/* Grupo 3: Estado y observaciones */}
-  <FieldsetTitle>Estado y observaciones</FieldsetTitle>
+  <FieldsetTitle>State and observations</FieldsetTitle>
   <Field>
     <Label>📍 Status</Label>
     <Select name="estado" value={formData.estado} onChange={handleChange}>
@@ -126,7 +128,7 @@ const handleSubmit = async (e: React.FormEvent) => {
   </Field>
   <Field>
     <Label>📝 Notes</Label>
-    <Textarea name="observaciones" value={formData.observaciones} onChange={handleChange} placeholder="Ej: problem in the digest system" />
+    <Textarea name="observations" value={formData.observaciones} onChange={handleChange} placeholder="Ej: problem in the digest system" />
   </Field>
 
   <Button type="submit">{isSubmitting ? "Saving..." : "Save"}</Button>
