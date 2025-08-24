@@ -192,7 +192,7 @@ const handleSubmit = async (e: React.FormEvent) => {
   </Field>
   <Field>
     <Label>📝 Notes</Label>
-    <Textarea name="observaciones" value={formData.observaciones} onChange={handleChange} placeholder="Ej: Cojera leve en pata trasera" />
+    <Textarea name="observaciones" value={formData.observaciones} onChange={handleChange} placeholder="Ej: problem in the digest system" />
   </Field>
 
   <Button type="submit">{isSubmitting ? "Saving..." : "Save"}</Button>
