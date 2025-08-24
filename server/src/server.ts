@@ -2,13 +2,11 @@ import app from './app';
 import { getPool } from './config/connection';
 
 const PORT = process.env.PORT || 3001;
-
 const pool = getPool();
-
 
 pool.connect()
   .then((client) => {
-    client.release(); // liberamos el cliente inmediatamente
+    client.release();
     console.log('✅ Database connected');
 
     app.listen(PORT, () => {
@@ -18,3 +16,4 @@ pool.connect()
   .catch((err) => {
     console.error('❌ Error connecting to the database:', err);
   });
+  
