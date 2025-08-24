@@ -1,73 +1,7 @@
 // src/pages/RegistroAnimal.tsx
 import { useState } from "react";
-import styled from "styled-components";
+import { FormContainer, Textarea,  Field, Label, Input, Select, Button} from "./AnimalRecordStyle"
 
-const FormContainer = styled.div`
-  max-width: 600px;
-  margin: auto;
-  background-color: rgba(255, 255, 255, 0.85);
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
-`;
-const Textarea = styled.textarea`
-  width: 100%;
-  padding: 0.5rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  resize: vertical;
-  min-height: 80px;
-`; 
-
-const Field = styled.div`
-  margin-bottom: 1rem;
-`;
-
-const Label = styled.label`
-  display: block;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  color: #4a2e19;
-`;
-
-const Input = styled.input`
-  width: 100%;
-  padding: 0.5rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-`;
-
-const Select = styled.select`
-  width: 100%;
-  padding: 0.5rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-`;
-
-const Button = styled.button`
-  background-color: #4a2e19;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 10px;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-  display: block;
-  margin: 1rem auto 0 auto;
-
-  &:hover {
-    background-color: #d9a7b5;
-    color: #4a2e19;
-  }
-`;
-const FieldsetTitle = styled.h3`
-  font-size: 1.25rem;
-  font-weight: bold;
-  margin: 1.5rem 0 1rem;
-  color: #4a2e19;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 0.25rem;
-`;
 export default function AnimalForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({

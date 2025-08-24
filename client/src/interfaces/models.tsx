@@ -29,3 +29,11 @@ export type  Bird = {
   estado: string;  // "alive" | "deceased"
   observaciones?: string;
 }
+
+export interface Animal {
+  id: number;
+  nombre: string;
+  especie: string;
+  fecha_nacimiento: string;
+  estado: string;
+}

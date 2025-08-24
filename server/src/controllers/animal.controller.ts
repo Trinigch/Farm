@@ -72,7 +72,22 @@ export const actualizarAnimal = async (req: Request, res: Response) => {
     res.status(500).json({ error: "Error actualizando el animal." });
   }
 };
+export const obtenerAnimalPorId = async (req: Request, res: Response):Promise<void> => {
+  const { id } = req.params;
+  const pool = getPool();
 
+  try {
+    const result = await pool.query(`SELECT * FROM animales WHERE id = $1`, [id]);
+    if (result.rows.length === 0) {
+     res.status(404).json({ error: "Animal no encontrado" });
+      return ;
+    }
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Error obteniendo el animal." });
+  }
+};
 export const eliminarAnimal = async (req: Request, res: Response) => {
   const { id } = req.params;
   const pool = getPool();
