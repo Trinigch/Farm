@@ -7,12 +7,12 @@ export default function RemoveAnimal() {
   const [id, setId] = useState("");
   const [animal, setAnimal] = useState<Animal | null>(null);
   const [loading, setLoading] = useState(false);
-
+  const API_URL = import.meta.env.VITE_API_URL;
   const handleSearch = async () => {
     if (!id) return alert("Please enter a valid ID");
     setLoading(true);
     try {
-      const res = await fetch(`http://localhost:3001/api/animals/${id}`);
+      const res = await fetch(`${API_URL}/api/animals/${id}`);
       if (!res.ok) throw new Error("Animal not found");
       const data = await res.json();
       setAnimal(data);
@@ -30,7 +30,7 @@ export default function RemoveAnimal() {
     if (!confirm) return;
 
     try {
-      const res = await fetch(`http://localhost:3001/api/animals/${animal.id}`, {
+      const res = await fetch(`${API_URL}/api/animals/${animal.id}`, {
         method: "DELETE",
       });
       if (!res.ok) throw new Error("Error deleting");
