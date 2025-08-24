@@ -198,7 +198,7 @@ export default function GoatsByYear() {
 
       {/* Cabras sin hijos */}
       <div style={{ marginTop: "40px", padding: "20px", background: "#fafafa", borderRadius: "12px" }}>
-        <h2 style={{ textAlign: "center", marginBottom: "20px" }}>Goats sin hijos</h2>
+        <h2 style={{ textAlign: "center", marginBottom: "20px" }}>All Goats</h2>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "20px", justifyContent: "center" }}>
           {goatsSinHijos.map(g => (
             <div
