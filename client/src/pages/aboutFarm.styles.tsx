@@ -215,7 +215,7 @@ export const CardContainer = styled.div`
     box-shadow: 0 8px 20px rgba(0,0,0,0.5);
   }`;
 
-  export const SectionHeader = styled.h2`
+  export const SectionHeader = styled.h1`
   font-size: 2.2rem;
   color: #fff8e1;
   margin: 40px 0 20px;

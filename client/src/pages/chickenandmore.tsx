@@ -37,13 +37,13 @@ export default function BirdsByYear() {
   return (
     <>
       <SectionHeader>
-        <h2>{`Total Birds: ${birds.length}`}</h2>
+        <Title>{`Total Birds: ${birds.length}`}</Title>
       </SectionHeader>
 
       <div style={{ padding: "20px" }}>
         {yearsSorted.map(year => (
           <div key={year} style={{ marginBottom: "40px" }}>
-            <h2 style={{ textAlign: "center", marginBottom: "20px" }}>{year}</h2>
+            <h3 style={{ textAlign: "center", marginBottom: "20px" }}>{year}</h3>
             <div
               style={{
                 display: "flex",
@@ -76,6 +76,10 @@ export default function BirdsByYear() {
                   }}
                 >
                   <strong>{bird.nombre}</strong>
+                                      
+                  <p>
+                  Id : {bird.id}
+                  </p>
                   <p style={{ fontSize: "12px", margin: "5px 0" }}>
                     {new Date(bird.fecha_nacimiento).toLocaleDateString()}
                   </p>

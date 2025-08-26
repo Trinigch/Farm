@@ -309,7 +309,7 @@ export default function SheepsByYear() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  if (sheeps.length === 0) return <div>Cargando ovejas...</div>;
+  if (sheeps.length === 0) return <div>loading sheeps...</div>;
 
   const hijos = sheeps.filter(s => s.padre_id || s.madre_id);
 
