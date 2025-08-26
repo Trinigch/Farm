@@ -17,7 +17,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Title = styled.h1`
+export const Title = styled.h2`
   font-family: "Playfair Display", serif;
   font-size: 2.5rem;
   color: #333;

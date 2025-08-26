@@ -37,7 +37,7 @@ export default function BirdsByYear() {
   return (
     <>
       <SectionHeader>
-        <Title>{`Total Birds: ${birds.length}`}</Title>
+        <h2>{`Total Birds: ${birds.length}`}</h2>
       </SectionHeader>
 
       <div style={{ padding: "20px" }}>
