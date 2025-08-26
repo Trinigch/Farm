@@ -4,14 +4,17 @@ import path from 'path';
 import animals from './routes/api/animals_routes'; 
 
 const app = express();
-const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5173';
+const FRONTEND_URL = process.env.FRONTEND_URL || "https://farm-9og5.onrender.com";
 app.use(
   cors({
     origin: FRONTEND_URL,
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+// importante: que Express también maneje OPTIONS
+app.options("*", cors());
+
 app.use(express.json());
 app.use('/api/animals',  animals ); 
 // Servir los archivos estáticos del cliente React
