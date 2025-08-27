@@ -9,6 +9,10 @@ import {
 
 const router = express.Router();
 
+// responder preflight para rutas con id
+router.options("/:id", (_req, res) => {
+  res.sendStatus(200);
+});
 router.get("/", obtenerAnimales);
 router.post("/", crearAnimal);
 router.put("/:id", actualizarAnimal);
