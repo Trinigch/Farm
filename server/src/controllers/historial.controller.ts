@@ -34,12 +34,17 @@ export const obtenerHistorialPorAnimal = async (req: Request, res: Response) => 
   try {
     const result = await pool.query(
       `SELECT * FROM historial_medico WHERE animal_id = $1 ORDER BY fecha DESC`,
-      [animal_id]
+      [Number(animal_id)]
     );
-    res.json(result.rows);
+   
+    if (result.rows.length === 0) {
+    return res.status(404).json({ error: "Animal no encontrado" });
+        }
+
+     return res.json(result.rows);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Error obteniendo historial médico." });
+    return res.status(500).json({ error: "Error obteniendo historial médico." });
   }
 };
 
