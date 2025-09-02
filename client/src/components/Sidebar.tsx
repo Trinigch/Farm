@@ -63,9 +63,14 @@ export default function Sidebar() {
        <button onClick={() => navigate("/remove-animal")} style={{ all: "unset", cursor: "pointer" }}>
         ➖  remove Animal
       </button>
-      <Link to="/historial">📋 Medical History</Link>
+
+        <button onClick={() => navigate("/MedicalHistory")} style={{ all: "unset", cursor: "pointer" }}>
+       📋 Medical Historyl
+      </button>
       <Link to="/buscar">🔍 Search / Filter</Link>
 
+
+ 
     </SidebarContainer>
   );
 }

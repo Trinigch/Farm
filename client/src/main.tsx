@@ -8,7 +8,8 @@ import Goats from './pages/goats.tsx'
 import Chickenandmore  from './pages/chickenandmore.tsx'
 import AboutFarm from './pages/aboutFarm.tsx';
 import AnimalForm from './components/AnimalRecord.tsx';
-import  RemoveAnimal from './components/RemoveAnimal.tsx'
+import RemoveAnimal from './components/RemoveAnimal.tsx'
+import MedicalHistory from './pages/medicalHistory.tsx'
 
 
 
@@ -45,8 +46,11 @@ const router = createBrowserRouter([
       {
       path: 'remove-animal',
       element: < RemoveAnimal />
+      },
+   {
+      path: 'medicalHistory',
+      element: <MedicalHistory  />
       }
-
 
 
     ],

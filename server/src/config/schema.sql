@@ -13,3 +13,15 @@ CREATE TABLE animales (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+
+CREATE TABLE historial_medico (
+  id SERIAL PRIMARY KEY,
+  animal_id INTEGER NOT NULL REFERENCES animales(id) ON DELETE CASCADE,
+  fecha DATE NOT NULL DEFAULT CURRENT_DATE,
+  diagnostico TEXT NOT NULL,
+  tratamiento TEXT,
+  veterinario TEXT,
+  notas TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
