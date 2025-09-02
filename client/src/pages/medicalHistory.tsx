@@ -95,7 +95,7 @@ export default function MedicalHistory() {
         <Input
           value={id}
           onChange={(e) => setId(e.target.value)}
-          placeholder="Ex: 12"
+          placeholder="Ex: 15"
         />
       </Field>
       <Button type="button" onClick={handleSearch} disabled={loading}>

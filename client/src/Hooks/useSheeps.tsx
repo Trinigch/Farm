@@ -20,7 +20,7 @@ export function useSheeps() {
       const res = await fetch("/api/animals/");
       const data = await res.json();
       // Asegúrate que padre_id y madre_id sean números o null en los datos
-      setSheeps(data.filter((item: any) => item.especie === "oveja"));
+      setSheeps(data.filter((item: any) => item.especie === "sheep"));
     } catch (error) {
       console.error("Error fetching sheeps:", error);
     } finally {

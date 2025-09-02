@@ -25,7 +25,7 @@ app.get('*', (_req, res) => {
 });
 
 
-app.use("/api/historial", historialRoutes);
+app.use("/api/historial/:animal_id", historialRoutes);
 
 
 export default app;

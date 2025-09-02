@@ -49,7 +49,7 @@ const router = createBrowserRouter([
       },
    {
       path: 'medicalHistory',
-      element: <MedicalHistory  />
+      element: <MedicalHistory/>
       }
 
 
