@@ -5,7 +5,7 @@ import animals from './routes/api/animals_routes';
 import historialRoutes from "./routes/api/historial_routes";
 const app = express();
 const FRONTEND_URL = process.env.FRONTEND_URL || "https://farm-9og5.onrender.com";
-console.log("process.env.FRONTEND_URL",process.env.FRONTEND_URL);
+console.log("developer mode process.env.FRONTEND_URL",process.env.FRONTEND_URL);
 
 app.use(
   cors({
