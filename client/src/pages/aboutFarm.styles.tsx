@@ -65,7 +65,7 @@ export const ImageContainer = styled.div<{ background?: string }>`
   position: relative;
   width: 100%;
   min-height: 100vh;
-  max-width: 1200px;
+
   background: ${(props) => (props.background
       ? `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url(${props.background}) center/cover no-repeat`
    : "#3e3e3e")};

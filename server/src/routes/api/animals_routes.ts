@@ -1,4 +1,5 @@
 import express from "express";
+import { Request, Response } from "express";
 import {
   obtenerAnimales,
   crearAnimal,
@@ -10,7 +11,7 @@ import {
 const router = express.Router();
 
 // responder preflight para rutas con id
-router.options("/:id", (_req, res) => {
+router.options("/:id", (_req:Request, res: Response ) => {
   res.sendStatus(200);
 });
 router.get("/", obtenerAnimales);
