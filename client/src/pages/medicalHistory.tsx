@@ -40,6 +40,7 @@ export default function MedicalHistory() {
     setLoading(true);
     try {
       const res = await fetch(`${API_URL}/api/animals/${id}`);
+      console.log("res:", res);
       if (!res.ok) throw new Error("Animal not found");
       const data = await res.json();
       setAnimal(data);

@@ -1,6 +1,9 @@
 
 import { Router } from "express";
-import { crearHistorial, obtenerHistorialPorAnimal, eliminarHistorial } from "../../controllers/historial.controller";
+import { crearHistorial,
+     obtenerHistorialPorAnimal, 
+     eliminarHistorial 
+    } from "../../controllers/historial.controller";
 
 const router = Router();
 
