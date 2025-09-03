@@ -17,8 +17,7 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
-// importante: que Express también maneje OPTIONS
-app.options("*", cors());
+
 
 app.use(express.json());
 app.use('/api/animals',  animals ); 
