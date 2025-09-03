@@ -1,6 +1,25 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import {
+  FormContainer,
+  Field,
+  Label,
+  Input,
+  Button,
+  AnimalCard,
+} from "../components/AnimalRecordStyle";
 
-const SearchFilter: React.FC = () => {
+type SearchResult = {
+  animal_id: number;
+  nombre: string;
+  especie: string;
+  estado: string;
+  fecha?: string;
+  diagnostico?: string;
+  tratamiento?: string;
+  veterinario?: string;
+};
+
+export default function SearchFilter() {
   const [filters, setFilters] = useState({
     nombre: "",
     especie: "",
@@ -9,109 +28,146 @@ const SearchFilter: React.FC = () => {
     veterinario: "",
   });
 
-  const [results, setResults] = useState<any[]>([]);
+  const [results, setResults] = useState<SearchResult[]>([]);
+  const [loading, setLoading] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const API_URL = import.meta.env.VITE_API_URL;
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     setFilters({ ...filters, [e.target.name]: e.target.value });
   };
 
   const handleSearch = async () => {
+    setLoading(true);
     const params = new URLSearchParams();
 
     Object.entries(filters).forEach(([key, value]) => {
       if (value) params.append(key, value);
     });
 
-    const res = await fetch(`/api/search?${params.toString()}`);
-    const data = await res.json();
-    setResults(data);
+    try {
+      const res = await fetch(`${API_URL}/api/search?${params.toString()}`);
+      if (!res.ok) throw new Error("Error al buscar");
+      const data = await res.json();
+      setResults(data);
+    } catch (err: any) {
+      alert(err.message || "Error fetching data");
+      setResults([]);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div className="p-6">
-      <h1 className="text-xl font-bold mb-4">🔍 Buscar Animales / Historial</h1>
-      <div className="grid grid-cols-2 gap-4 mb-4">
-        <input
-          name="nombre"
-          value={filters.nombre}
-          onChange={handleChange}
-          placeholder="Nombre del animal"
-          className="border p-2 rounded"
-        />
-        <input
-          name="especie"
-          value={filters.especie}
-          onChange={handleChange}
-          placeholder="Especie"
-          className="border p-2 rounded"
-        />
-        <select
-          name="estado"
-          value={filters.estado}
-          onChange={handleChange}
-          className="border p-2 rounded"
-        >
-          <option value="">-- Estado --</option>
-          <option value="alive">Alive</option>
-          <option value="deceased">Deceased</option>
-          <option value="under treatment">Under Treatment</option>
-        </select>
-        <input
-          name="diagnostico"
-          value={filters.diagnostico}
-          onChange={handleChange}
-          placeholder="Diagnóstico"
-          className="border p-2 rounded"
-        />
-        <input
-          name="veterinario"
-          value={filters.veterinario}
-          onChange={handleChange}
-          placeholder="Veterinario"
-          className="border p-2 rounded"
-        />
-      </div>
-      <button
-        onClick={handleSearch}
-        className="bg-blue-600 text-white px-4 py-2 rounded"
-      >
-        Buscar
-      </button>
+    <FormContainer>
+      <h1>🔍 Buscar Animales / Historial</h1>
 
-      <div className="mt-6">
-        {results.length > 0 ? (
-          <table className="w-full border-collapse border">
-            <thead>
-              <tr>
-                <th className="border p-2">Animal</th>
-                <th className="border p-2">Especie</th>
-                <th className="border p-2">Estado</th>
-                <th className="border p-2">Fecha</th>
-                <th className="border p-2">Diagnóstico</th>
-                <th className="border p-2">Tratamiento</th>
-                <th className="border p-2">Veterinario</th>
-              </tr>
-            </thead>
-            <tbody>
-              {results.map((row, idx) => (
-                <tr key={idx}>
-                  <td className="border p-2">{row.nombre}</td>
-                  <td className="border p-2">{row.especie}</td>
-                  <td className="border p-2">{row.estado}</td>
-                  <td className="border p-2">{row.fecha || "-"}</td>
-                  <td className="border p-2">{row.diagnostico || "-"}</td>
-                  <td className="border p-2">{row.tratamiento || "-"}</td>
-                  <td className="border p-2">{row.veterinario || "-"}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        ) : (
-          <p className="text-gray-500 mt-4">No hay resultados</p>
-        )}
-      </div>
-    </div>
+      {/* filtros */}
+      <AnimalCard>
+        <Field>
+          <Label>Nombre</Label>
+          <Input
+            name="nombre"
+            value={filters.nombre}
+            onChange={handleChange}
+            placeholder="Nombre del animal"
+          />
+        </Field>
+
+        <Field>
+          <Label>Especie</Label>
+          <Input
+            name="especie"
+            value={filters.especie}
+            onChange={handleChange}
+            placeholder="Ej: Oveja"
+          />
+        </Field>
+
+        <Field>
+          <Label>Estado</Label>
+          <select
+            name="estado"
+            value={filters.estado}
+            onChange={handleChange}
+            className="border p-2 rounded w-full"
+          >
+            <option value="">-- Estado --</option>
+            <option value="alive">Alive</option>
+            <option value="deceased">Deceased</option>
+            <option value="under treatment">Under Treatment</option>
+          </select>
+        </Field>
+
+        <Field>
+          <Label>Diagnóstico</Label>
+          <Input
+            name="diagnostico"
+            value={filters.diagnostico}
+            onChange={handleChange}
+            placeholder="Ej: Neumonía"
+          />
+        </Field>
+
+        <Field>
+          <Label>Veterinario</Label>
+          <Input
+            name="veterinario"
+            value={filters.veterinario}
+            onChange={handleChange}
+            placeholder="Ej: Dr. López"
+          />
+        </Field>
+
+        <Button type="button" onClick={handleSearch} disabled={loading}>
+          {loading ? "Buscando..." : "Buscar"}
+        </Button>
+      </AnimalCard>
+
+      {/* resultados */}
+      {results.length > 0 && (
+        <AnimalCard>
+          <h3>Resultados</h3>
+          {results.map((row) => (
+            <div
+              key={`${row.animal_id}-${row.fecha || "nofecha"}`}
+              style={{
+                borderBottom: "1px solid #ccc",
+                margin: "8px 0",
+                paddingBottom: "4px",
+              }}
+            >
+              <p>
+                <strong>Animal:</strong> {row.nombre} ({row.especie})
+              </p>
+              <p>
+                <strong>Estado:</strong> {row.estado}
+              </p>
+              <p>
+                <strong>Fecha:</strong>{" "}
+                {row.fecha ? new Date(row.fecha).toLocaleDateString() : "—"}
+              </p>
+              <p>
+                <strong>Diagnóstico:</strong> {row.diagnostico || "—"}
+              </p>
+              <p>
+                <strong>Tratamiento:</strong> {row.tratamiento || "—"}
+              </p>
+              <p>
+                <strong>Veterinario:</strong> {row.veterinario || "—"}
+              </p>
+            </div>
+          ))}
+        </AnimalCard>
+      )}
+
+      {results.length === 0 && !loading && (
+        <p style={{ marginTop: "1rem", color: "#666" }}>
+          No hay resultados
+        </p>
+      )}
+    </FormContainer>
   );
-};
-
-export default SearchFilter;
+}

@@ -69,7 +69,7 @@ export default function Sidebar() {
       </button>
 
       
-        <button onClick={() => navigate("/Search / Filter")} style={{ all: "unset", cursor: "pointer" }}>
+        <button onClick={() => navigate("/SearchFilter")} style={{ all: "unset", cursor: "pointer" }}>
        🔍 Search / Filter
       </button>
       
