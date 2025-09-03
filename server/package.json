@@ -6,8 +6,8 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/server.js",
-    "dev": "nodemon src/server.ts",
-    "postinstall": "npm install --save-dev @types/express @types/cors @types/pg"
+    "dev": "nodemon src/server.ts"
+   
     
   },
   "dependencies": {
