@@ -1,6 +1,6 @@
 import express from 'express';
 import { Request, Response } from "express";
-
+import { join } from 'path';
 import cors from 'cors';
 import path from 'path';
 import animals from './routes/api/animals_routes'; 
@@ -26,8 +26,12 @@ app.use ("/api/search", searchRoutes);
 // Servir los archivos estáticos del cliente React
 app.use(express.static(path.join(__dirname, 'client')));
 
-app.get('*', (_req: Request, res: Response) => {
-  res.sendFile(path.join(__dirname, 'client', 'index.html'));
-});
+// app.get('*', (_req: Request, res: Response) => {
+//       res.sendFile(join(__dirname, 'client', 'index.html'));
+// });
 
+// Catch-all para React SPA
+app.use((_req: Request, res: Response) => {
+  res.sendFile(join(__dirname, 'client', 'index.html'));
+});
 export default app;
