@@ -1,4 +1,6 @@
 import express from 'express';
+import { Request, Response } from "express";
+
 import cors from 'cors';
 import path from 'path';
 import animals from './routes/api/animals_routes'; 
@@ -23,7 +25,7 @@ app.use("/api/historial", historialRoutes);
 // Servir los archivos estáticos del cliente React
 app.use(express.static(path.join(__dirname, 'client')));
 
-app.get('*', (_req, res) => {
+app.get('*', (_req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, 'client', 'index.html'));
 });
 
