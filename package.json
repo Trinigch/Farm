@@ -20,6 +20,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/cors": "^2.8.19",
     "@types/dagre": "^0.7.53",
     "@types/express": "^5.0.3",
     "@types/mssql": "^9.1.7",
