@@ -10,7 +10,7 @@ import AboutFarm from './pages/aboutFarm.tsx';
 import AnimalForm from './components/AnimalRecord.tsx';
 import RemoveAnimal from './components/RemoveAnimal.tsx'
 import MedicalHistory from './pages/medicalHistory.tsx'
-
+import SearchFilter from './pages/SearchFilter.tsx'
 
 
 const router = createBrowserRouter([
@@ -50,6 +50,10 @@ const router = createBrowserRouter([
    {
       path: 'medicalHistory',
       element: <MedicalHistory/>
+      },
+   {
+      path: 'SearchFilter',
+      element: <SearchFilter/>
       }
 
 

@@ -67,7 +67,12 @@ export default function Sidebar() {
         <button onClick={() => navigate("/MedicalHistory")} style={{ all: "unset", cursor: "pointer" }}>
        📋 Medical Historyl
       </button>
-      <Link to="/buscar">🔍 Search / Filter</Link>
+
+      
+        <button onClick={() => navigate("/Search / Filter")} style={{ all: "unset", cursor: "pointer" }}>
+       🔍 Search / Filter
+      </button>
+      
 
 
  
