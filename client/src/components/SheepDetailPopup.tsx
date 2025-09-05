@@ -38,7 +38,7 @@ const Input = styled.input`
   border-radius: 8px;
   border: 1px solid #ccc;
 `;
-
+//cursor: pointer;
 const Button = styled.button`
   background-color: #4a2e19;
   color: white;
@@ -46,7 +46,7 @@ const Button = styled.button`
   border-radius: 100px;
   font-weight: bold;
   border: none;
-  cursor: pointer;
+  
   justify-content: flex-end;
 
   &:hover:enabled {
