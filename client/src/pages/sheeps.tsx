@@ -144,7 +144,8 @@ export default function SheepsByYear() {
                   <g key={h.id}>
                     {/* Padre */}
                     {padre && (
-                      <>
+                      <g onClick={() => setSelectedSheep(padre)} style={{ cursor: "pointer" }}>
+
                         <rect
                           x={colPadreX}
                           y={yBase}
@@ -154,6 +155,8 @@ export default function SheepsByYear() {
                           ry={10}
                           fill={getSheepFill(padre, "padre")}
                           stroke="#555"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => setSelectedSheep(padre)} 
                         />
                         <text
                           x={colPadreX + 50}
@@ -165,7 +168,7 @@ export default function SheepsByYear() {
                         >
                           {padre.nombre}
                         </text>
-                      </>
+                      </g>
                     )}
 
                     {/* Hijo */}
@@ -216,7 +219,7 @@ export default function SheepsByYear() {
 
                     {/* Madre */}
                     {madre && (
-                      <>
+                         <g onClick={() => setSelectedSheep(madre)} style={{ cursor: "pointer" }}>
                         <rect
                           x={colMadreX}
                           y={yBase}
@@ -226,6 +229,8 @@ export default function SheepsByYear() {
                           ry={10}
                           fill={getSheepFill(madre, "madre")}
                           stroke="#555"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => setSelectedSheep(madre)}
                         />
                         <text
                           x={colMadreX + 50}
@@ -237,7 +242,7 @@ export default function SheepsByYear() {
                         >
                           {madre.nombre}
                         </text>
-                      </>
+                      </g>
                     )}
 
                     {/* Conexiones curvas */}

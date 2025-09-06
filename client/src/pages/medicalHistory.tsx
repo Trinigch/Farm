@@ -22,6 +22,7 @@ type Historial = {
 export default function MedicalHistory() {
   const [id, setId] = useState("");
   const [animal, setAnimal] = useState<Animal | null>(null);
+  const [animalForm, setAnimalForm] = useState({ estado: "alive" });
   const [loading, setLoading] = useState(false);
   const [historial, setHistorial] = useState<Historial[]>([]);
   const [nuevoRegistro, setNuevoRegistro] = useState({
@@ -37,6 +38,7 @@ export default function MedicalHistory() {
   // Buscar animal por ID
   const handleSearch = async () => {
     if (!id) return alert("Please enter a valid ID");
+  
     setLoading(true);
     try {
       const res = await fetch(`${API_URL}/api/animals/${id}`);
@@ -55,6 +57,29 @@ export default function MedicalHistory() {
       setHistorial([]);
     } finally {
       setLoading(false);
+    }
+  };
+
+    const handleStatusChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setAnimalForm({ ...animalForm, estado: e.target.value });
+      
+    console.log(" estado: ", animalForm);
+  };
+
+  const handleUpdateStatus = async () => {
+    if (!animal) return;
+    try {
+      const res = await fetch(`${API_URL}/api/animals/${animal.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...animal, estado: animalForm.estado }),
+      });
+      
+      const updated = await res.json();
+      setAnimal(updated);
+      alert("Status updated successfully!");
+    } catch (err) {
+      alert("Error updating status");
     }
   };
 
@@ -88,6 +113,7 @@ export default function MedicalHistory() {
     }
   };
 
+
   return (
     <FormContainer>
       {/* Buscar animal */}
@@ -104,6 +130,7 @@ export default function MedicalHistory() {
       </Button>
 
       {/* Info del animal */}
+   {/* Info del animal */}
       {animal && (
         <AnimalCard>
           <p>
@@ -119,7 +146,15 @@ export default function MedicalHistory() {
               : "N/A"}
           </p>
           <p>
-            <strong>Status:</strong> {animal.estado}
+            <strong>Status:</strong>{" "}
+            <select value={animalForm.estado} onChange={handleStatusChange}>
+              <option value="alive">Alive</option>
+              <option value="deceased">Deceased</option>
+              <option value="under treatment">Under Treatment</option>
+            </select>{""}
+            <Button type="button" onClick={handleUpdateStatus}>
+              Update Status
+            </Button>
           </p>
         </AnimalCard>
       )}
